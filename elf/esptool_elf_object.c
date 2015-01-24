@@ -249,13 +249,13 @@ unsigned char* get_elf_section_bindata(Elf32_Half secnum, uint32_t pad_to)
             if(fseek(e_object.e_file, e_object.sections[secnum-1].offset, SEEK_SET) != 0)
             {
                 iprintf(-1, "can't seek to ELF file section %i binary datai\r\n", secnum);
-                return;
+                return 0;
             }
             
             if(fread(bindata, 1, e_object.sections[secnum-1].size, e_object.e_file) != e_object.sections[secnum-1].size)
             {
                 iprintf(-1, "can't read section #%i binary data from ELF file\r\n", secnum);
-                return;
+                return 0;
             }
             
             

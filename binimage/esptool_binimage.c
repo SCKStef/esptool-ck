@@ -156,7 +156,7 @@ int binimage_write_close(uint32_t padsize)
             iprintf(-1, "cant write data block for segment  #%i to binimage file, aborting\r\n", cnt);
             close(b_image.image_file);
             b_image.image_file = 0;
-            return;
+            return 0;
         }
         
         total_size += b_image.segments[cnt].size;
